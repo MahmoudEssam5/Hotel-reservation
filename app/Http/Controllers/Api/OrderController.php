@@ -37,9 +37,8 @@ class OrderController extends Controller
             if ($isAvailable) {
 
                 $attributes = $request->all();
-                $orders = Order::create($attributes);
-                $order = Order::with(['user', 'room'])->get()->find($orders->id);
-                return response()->json(['success' => 'Room booked successfully', 'orders' => $orders , 'order' => $order], 201);
+                $orders = Order::create($attributes)->with(['user', 'room'])->get();
+                return response()->json(['success' => 'Room booked successfully', 'orders' => $orders], 201);
 
             } else {
 
@@ -58,9 +57,8 @@ class OrderController extends Controller
         } else {
 
             $attributes = $request->all();
-            $orders = Order::create($attributes);
-            $order = Order::with(['user', 'room'])->get()->find($orders->id);
-            return response()->json(['success' => 'Room booked successfully for the first time', 'orders' => $orders , 'order' => $order], 201);
+            $orders = Order::create($attributes)->with(['user', 'room'])->get();
+            return response()->json(['success' => 'Room booked successfully for the first time', 'orders' => $orders], 201);
         }
     }
 

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\AdminController;
 use App\Http\Controllers\Api\OrderController;
 use App\Http\Controllers\Api\RoomController;
 use App\Http\Controllers\Api\UserController;
@@ -9,6 +10,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
+
+// Admin route
+Route::post('adminlogin', [AdminController::class, 'AdminLogin'])->name('adminlogin');
 
 
 // users info
