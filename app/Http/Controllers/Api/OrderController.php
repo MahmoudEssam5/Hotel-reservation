@@ -48,7 +48,7 @@ class OrderController extends Controller
                 $availableTime = $nextAvailableTime ? $nextAvailableTime->end_time : null;
 
                 return response()->json([
-                    'error' => 'Room is not available',
+                    'error' => 'Room is not available at the requested time.',
                     'available_until' => $availableTime
                 ], 422);
             }

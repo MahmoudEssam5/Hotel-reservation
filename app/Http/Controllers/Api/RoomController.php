@@ -37,9 +37,10 @@ class RoomController extends Controller
         return response()->json($room);
     }
 
-    public function update($id, RoomUpdateRequest $request): JsonResponse
+    public function update(RoomUpdateRequest $request, $id): JsonResponse
     {
         $validatedData = $request->validated();
+
         $room = Room::findOrFail($id);
 
         if ($request->hasFile('image')) {
@@ -50,12 +51,17 @@ class RoomController extends Controller
             $validatedData['image'] = $path;
         }
 
-        $room->update($validatedData);
+        $room->update([
+            'name' => $validatedData['name'],
+            'room-number' => $validatedData['room-number'],
+            'description' => $validatedData['description'],
+            'image' => $validatedData['image'],
+        ]);
 
         return response()->json($room);
     }
 
-    public function destroy(Room $room, $id): JsonResponse
+    public function destroy($id): JsonResponse
     {
         $room = Room::find($id);
 

@@ -26,7 +26,7 @@ class UserController extends Controller
 
         if (auth()->guard('web')->attempt($attributes)) {
             $user = auth()->user();
-            return response()->json(['message' => 'User Login']);
+            return response()->json(['message' => 'User Login Success', 'user' => $user]);
         }
     }
 
@@ -34,5 +34,11 @@ class UserController extends Controller
     {
         $users = User::all();
         return response()->json(['users' => $users]);
+    }
+
+    public function logout()
+    {
+        auth()->guard('web')->logout();
+        return response()->json(['message' => 'User Logout Successful']);
     }
 }

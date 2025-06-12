@@ -20,4 +20,10 @@ class AdminController extends Controller
             return response()->json(['message' => 'Admin Login', 'admin' => $attributes]);
         }
     }
+
+    public function logout()
+    {
+        auth()->guard('admin')->logout();
+        return response()->json(['message' => 'Admin Logout Successful']);
+    }
 }

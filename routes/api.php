@@ -7,30 +7,30 @@ use App\Http\Controllers\Api\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/user', function (Request $request) {
-    return $request->user();
-})->middleware('auth:sanctum');
 
 // Admin route
-Route::post('adminlogin', [AdminController::class, 'AdminLogin'])->name('adminlogin');
-
+Route::post('admin.login', [AdminController::class, 'AdminLogin'])->name('admin.login');
+Route::get('admin.logout', [AdminController::class, 'logout'])->name('admin.logout');
 
 // users info
-Route::post('userregister', [UserController::class, 'UserRegister'])
-    ->name('userregister');
-Route::post('userlogin', [UserController::class, 'UserLogin'])
-    ->name('userlogin');
+Route::post('user.register', [UserController::class, 'UserRegister'])
+    ->name('user.register');
+Route::post('user.login', [UserController::class, 'UserLogin'])
+    ->name('user.login');
 Route::get('users', [UserController::class, 'index'])->name("users");
+Route::get('user.logout', [UserController::class, 'logout'])->name("user.logout");
 
-//Route::apiResource('rooms', RoomController::class);
+//Route::apiResource rooms
 
-Route::get('rooms',[RoomController::class ,'index'])->name('rooms');
-Route::get('show/{id}',[RoomController::class , 'show'])->name('show');
-Route::post('store',[RoomController::class , 'store'])->name('store');
+//Route::get('rooms',[RoomController::class ,'index'])->name('rooms');
+//Route::get('show/{id}',[RoomController::class , 'show'])->name('show');
+//Route::post('store',[RoomController::class , 'store'])->name('store');
 Route::put('update/{id}',[RoomController::class , 'update'])->name('update');
-Route::delete('delete/{id}',[RoomController::class , 'destroy'])->name('delete');
+//Route::delete('delete/{id}',[RoomController::class , 'destroy'])->name('delete');
+
+Route::apiResource('rooms', RoomController::class);
 
 
 // Order Routes
 Route::get('order',[OrderController::class , 'index'])->name('order');
-Route::post('orderstore',[OrderController::class , 'OrderStore'])->name('orderstore');
+Route::post('order.store',[OrderController::class , 'OrderStore'])->name('order.store');
