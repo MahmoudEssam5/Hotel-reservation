@@ -19,12 +19,10 @@ class OrderController extends Controller
 
     function hasRoomBeenBookedBefore($roomId)
     {
-        // التحقق من وجود حجز سابق للغرفة باستخدام استعلام بسيط
         return Order::where('room_id', $roomId)->exists();
     }
     public function OrderStore(OrderStoreRequest $request): JsonResponse
     {
-        // الحصول على المدخلات
         $roomId = $request->input('room_id');
         $startTime = Carbon::parse($request->input('start_day'));
         $endTime = Carbon::parse($request->input('end_day'));
