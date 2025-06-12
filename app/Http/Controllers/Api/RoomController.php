@@ -51,17 +51,11 @@ class RoomController extends Controller
             $validatedData['image'] = $path;
         }
 
-        $room->update([
-            'name' => $validatedData['name'],
-            'room_number' => $validatedData['room_number'],
-            'description' => $validatedData['description'],
-            'image' => $validatedData['image'],
-        ]);
-
-
+        $room->update($validatedData);
 
         return response()->json($room);
     }
+
 
     public function destroy($id): JsonResponse
     {

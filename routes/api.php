@@ -24,7 +24,6 @@ Route::get('user.logout', [UserController::class, 'logout'])->name("user.logout"
 
 Route::apiResource('rooms', RoomController::class);
 
-
 // Order Routes
 Route::get('orders',[OrderController::class , 'index'])->name('orders');
 Route::post('order.store',[OrderController::class , 'OrderStore'])->name('order.store');
