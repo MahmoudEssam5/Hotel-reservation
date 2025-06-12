@@ -23,7 +23,7 @@ class RoomStoreRequest extends FormRequest
     {
         return [
             'name',
-            'room-number',
+            'room_number',
             'description',
             'image'
         ];

@@ -53,10 +53,12 @@ class RoomController extends Controller
 
         $room->update([
             'name' => $validatedData['name'],
-            'room-number' => $validatedData['room-number'],
+            'room_number' => $validatedData['room_number'],
             'description' => $validatedData['description'],
             'image' => $validatedData['image'],
         ]);
+
+
 
         return response()->json($room);
     }

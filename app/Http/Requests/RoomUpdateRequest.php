@@ -23,7 +23,7 @@ class RoomUpdateRequest extends FormRequest
     {
         return [
             'name' => 'nullable|string|max:255',
-            'room-number' => 'nullable|string|max:100',
+            'room_number' => 'nullable|string|max:100',
             'description' => 'nullable|string',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
         ];
