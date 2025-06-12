@@ -13,6 +13,13 @@ class RoomSeeder extends Seeder
      */
     public function run(): void
     {
-        Room::factory(10)->create();
+        for ($i = 1; $i <= 10; $i++) {
+            Room::create([
+                'name' => "Room $i",
+                'room-number' => 100 + $i,
+                'description' => "This is room number $i. It is very comfortable and well-furnished.",
+                'image' => "room$i.jpg",
+            ]);
+        }
     }
 }
