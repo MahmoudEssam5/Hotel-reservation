@@ -21,13 +21,6 @@ Route::get('users', [UserController::class, 'index'])->name("users");
 Route::get('user.logout', [UserController::class, 'logout'])->name("user.logout");
 
 //Route::apiResource rooms
-
-//Route::get('rooms',[RoomController::class ,'index'])->name('rooms');
-//Route::get('show/{id}',[RoomController::class , 'show'])->name('show');
-//Route::post('store',[RoomController::class , 'store'])->name('store');
-Route::put('update/{id}',[RoomController::class , 'update'])->name('update');
-//Route::delete('delete/{id}',[RoomController::class , 'destroy'])->name('delete');
-
 Route::apiResource('rooms', RoomController::class);
 
 
